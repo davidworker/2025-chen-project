@@ -4,9 +4,10 @@
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "/css",
+            "savePath": "/dist/css",
             "savePathReplacementPairs": null
         }
     ],
+    "liveServer.settings.root": "/dist",
     "liveSassCompile.settings.showOutputWindowOn": "Error"
 }
