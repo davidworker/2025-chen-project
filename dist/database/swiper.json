@@ -1,0 +1,20 @@
+[
+    {
+        "title": "COFFEE WARE | 咖 啡 道 具",
+        "image": "/images/swiper-1.webp",
+        "link": "https://www.google.com?q=1",
+        "buttonText": "Shop Now1"
+    },
+    {
+        "title": "山 徑 方 盤",
+        "image": "/images/swiper-2.webp",
+        "link": "https://www.google.com?q=2",
+        "buttonText": "Shop Now2"
+    },
+    {
+        "title": "輪花杯+杯托",
+        "image": "/images/swiper-3.webp",
+        "link": "https://www.google.com?q=3",
+        "buttonText": "Shop Now3"
+    }
+]

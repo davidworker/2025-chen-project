@@ -125,20 +125,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    &::before {
-        content: '';
+
+    .bg-image {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: #00000080;
-        z-index: 1;
+
     }
+
+
 
 
     .prev-btn {
@@ -155,14 +153,59 @@
         z-index: 2;
     }
 
-    .content {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        z-index: 2;
+    .items {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: opacity 0.5s ease-in-out;
+
+        &.fade-out {
+            opacity: 0;
+        }
+
+        li {
+            display: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #00000080;
+                z-index: 1;
+            }
+
+            .content {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+                z-index: 2;
+            }
+
+            &.active {
+                display: flex;
+            }
+        }
     }
 
     .next-btn {

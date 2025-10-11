@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Microsoft JhengHei', sans-serif;
 }

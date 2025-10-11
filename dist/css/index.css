@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Microsoft JhengHei", sans-serif;
 }
@@ -130,19 +135,13 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-.swiper::before {
-  content: "";
+.swiper .bg-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5019607843);
-  z-index: 1;
 }
 .swiper .prev-btn {
   position: absolute;
@@ -157,7 +156,44 @@ ul {
   cursor: pointer;
   z-index: 2;
 }
-.swiper .content {
+.swiper .items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+.swiper .items.fade-out {
+  opacity: 0;
+}
+.swiper .items li {
+  display: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.swiper .items li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5019607843);
+  z-index: 1;
+}
+.swiper .items li .content {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -165,6 +201,9 @@ ul {
   justify-content: center;
   gap: 20px;
   z-index: 2;
+}
+.swiper .items li.active {
+  display: flex;
 }
 .swiper .next-btn {
   position: absolute;
