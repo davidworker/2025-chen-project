@@ -1,0 +1,115 @@
+@import './components/reset';
+
+
+.link-nav {
+    margin: 20px auto;
+    font-size: 1rem;
+
+    ul {
+        display: flex;
+        gap: 10px;
+
+        li {
+            text-align: center;
+
+            a {
+                padding-right: 5px;
+            }
+
+            &::after {
+                content: '>';
+            }
+
+            &:last-child {
+                &::after {
+                    content: '';
+                }
+            }
+        }
+    }
+}
+
+.product-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 20px;
+
+    .product-image {
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gallery {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+    }
+
+    .product-info {
+        .product-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .qty-wrap {
+            display: grid;
+            gap: 5px;
+            margin-bottom: 20px;
+
+            input {
+                width: 200px;
+                padding: 0 10px;
+                border: 1px solid #ccc;
+                height: 40px;
+                outline: 0;
+
+                &:focus {
+                    border-color: #000;
+                }
+            }
+        }
+
+        .btn-wrap {
+            margin-bottom: 20px;
+
+            .button {
+                padding: 10px 20px;
+                background-color: #6b6b6b;
+                color: #fff;
+                border: 0;
+                cursor: pointer;
+                font-size: 1.1rem;
+
+                &:hover {
+                    background-color: #a0a0a0;
+                }
+            }
+        }
+
+        .social-link {
+            display: flex;
+            gap: 10px;
+
+            a {
+                padding: 10px;
+                border: 1px solid #ebebeb;
+                font-size: 0.7rem;
+
+                &:hover {
+                    background-color: #6b6b6b;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

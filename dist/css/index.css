@@ -1,3 +1,7 @@
+:root {
+  --header-height: 80px;
+}
+
 *,
 *::before,
 *::after {
@@ -32,32 +36,7 @@ ul {
   list-style-type: none;
 }
 
-/* Toast Message */
-.toast-message {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 5px;
-  font-size: 1rem;
-  z-index: 9999;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.toast-message.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .header {
-  --header-height: 80px;
   position: absolute;
   top: 0;
   left: 0;
@@ -148,6 +127,85 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.header.no-bg {
+  color: #000;
+}
+.header.no-bg .logo a {
+  background-image: url("../images/logo-dark.webp");
+}
+
+.footer {
+  background-color: #e5e5e5;
+  padding: 60px 0;
+}
+.footer .footer-link {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.footer .footer-link .footer-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+.footer .footer-link .footer-list {
+  display: flex;
+  gap: 10px;
+  font-size: 1.1rem;
+}
+.footer .payment-method {
+  margin-top: 50px;
+  display: grid;
+  gap: 10px;
+  text-align: center;
+  font-size: 2rem;
+}
+.footer .payment-method img {
+  max-width: 100px;
+  height: auto;
+}
+.footer .footer-rule {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: grid;
+  gap: 10px;
+}
+.footer .rule-list ul {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.main-wrap {
+  padding-top: var(--header-height);
+}
+
+/* Toast Message */
+.toast-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast-message.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .swiper {
@@ -374,51 +432,6 @@ ul {
 }
 .product-recommend .product-recommend-wrap .product-item:hover .add-cart {
   display: block;
-}
-
-.footer {
-  background-color: #e5e5e5;
-  padding: 60px 0;
-}
-.footer .footer-link {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-.footer .footer-link .footer-title {
-  font-weight: 600;
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #000;
-}
-.footer .footer-link .footer-list {
-  display: flex;
-  gap: 10px;
-  font-size: 1.1rem;
-}
-.footer .payment-method {
-  margin-top: 50px;
-  display: grid;
-  gap: 10px;
-  text-align: center;
-  font-size: 2rem;
-}
-.footer .payment-method img {
-  max-width: 100px;
-  height: auto;
-}
-.footer .footer-rule {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 0.9rem;
-  display: grid;
-  gap: 10px;
-}
-.footer .rule-list ul {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
 }
 
 @media (max-width: 768px) {
