@@ -272,3 +272,61 @@
         font-size: 1.8rem;
     }
 }
+
+.product-category {
+    margin: 40px auto;
+
+    .product-category-wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+
+        .category-item {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+
+            h5 {
+                position: relative;
+                z-index: 2;
+            }
+
+            .item-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #ad3e3e;
+                z-index: 1;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition: transform 0.3s ease-in-out;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #00000048;
+                    z-index: 99;
+                }
+            }
+
+            &:hover {
+                .item-background {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
