@@ -202,4 +202,59 @@ const swiper = {
     }
 }
 
+const cart = {
+    init() {
+        this.dom = {
+            badge: document.querySelector('.header .badge'),
+            addBtns: document.querySelectorAll('.add-cart')
+        };
+        this.count = 1; // Initial count based on HTML
+        this.initEvent();
+    },
+    initEvent() {
+        this.dom.addBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.updateBadge();
+                this.showToast();
+            });
+        });
+    },
+    updateBadge() {
+        this.count++;
+        this.dom.badge.textContent = this.count;
+
+        // Animation
+        this.dom.badge.classList.remove('pop');
+        void this.dom.badge.offsetWidth; // Trigger reflow
+        this.dom.badge.classList.add('pop');
+    },
+    showToast() {
+        // Remove existing toast if any
+        const existingToast = document.querySelector('.toast-message');
+        if (existingToast) {
+            existingToast.remove();
+        }
+
+        const toast = document.createElement('div');
+        toast.classList.add('toast-message');
+        toast.innerHTML = '<i class="fa-solid fa-check"></i> 已加入購物車';
+        document.body.appendChild(toast);
+
+        // Trigger animation
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 10);
+
+        // Remove after 2 seconds
+        setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => {
+                toast.remove();
+            }, 300); // Wait for fade out transition
+        }, 2000);
+    }
+};
+
 swiper.init();
+cart.init();
