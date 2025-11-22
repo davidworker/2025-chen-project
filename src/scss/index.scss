@@ -330,3 +330,55 @@
         }
     }
 }
+
+
+.product-recommend {
+    margin: 100px auto;
+
+    .product-recommend-wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+
+        .product-item {
+            height: 300px;
+
+            .product-image {
+                position: relative;
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+
+                .add-cart {
+                    position: absolute;
+                    padding: 10px 20px;
+                    background-color: #00000083;
+                    color: #fff;
+                    font-size: 0.8rem;
+                    border-radius: 5px;
+                    left: 50%;
+                    top: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                    display: none;
+                }
+            }
+
+            .product-content {
+                font-size: 0.9rem;
+                margin-top: 10px;
+                text-align: center;
+                line-height: 1.5;
+            }
+
+
+            &:hover {
+                .add-cart {
+                    display: block;
+                }
+            }
+
+        }
+    }
+}
