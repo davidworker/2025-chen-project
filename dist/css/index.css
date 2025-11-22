@@ -376,6 +376,51 @@ ul {
   display: block;
 }
 
+.footer {
+  background-color: #e5e5e5;
+  padding: 60px 0;
+}
+.footer .footer-link {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.footer .footer-link .footer-title {
+  font-weight: 600;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+.footer .footer-link .footer-list {
+  display: flex;
+  gap: 10px;
+  font-size: 1.1rem;
+}
+.footer .payment-method {
+  margin-top: 50px;
+  display: grid;
+  gap: 10px;
+  text-align: center;
+  font-size: 2rem;
+}
+.footer .payment-method img {
+  max-width: 100px;
+  height: auto;
+}
+.footer .footer-rule {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: grid;
+  gap: 10px;
+}
+.footer .rule-list ul {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   .product-category .product-category-wrap {
     grid-template-columns: repeat(2, 1fr);

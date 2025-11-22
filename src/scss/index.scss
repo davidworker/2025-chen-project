@@ -384,6 +384,61 @@
     }
 }
 
+.footer {
+    background-color: #e5e5e5;
+    padding: 60px 0;
+
+    .footer-link {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+
+        .footer-title {
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #000;
+        }
+
+        .footer-list {
+            display: flex;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+    }
+
+    .payment-method {
+        margin-top: 50px;
+        display: grid;
+        gap: 10px;
+        text-align: center;
+        font-size: 2rem;
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    }
+
+    .footer-rule {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 0.9rem;
+        display: grid;
+        gap: 10px;
+    }
+
+    .rule-list {
+        ul {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+    }
+}
+
 @media (max-width: 768px) {
     .product-category {
         .product-category-wrap {
