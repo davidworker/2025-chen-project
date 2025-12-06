@@ -8,7 +8,7 @@
         "category": "CUP | 杯子",
         "description": "茶壺（230ml） 描述",
         "created_at": "2025-12-06 12:05:57",
-        "color": "紅色"
+        "color": "Red"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "category": "CUP | 杯子",
         "description": "茶壺（230ml） 描述",
         "created_at": "2025-12-05 12:05:57",
-        "color": "藍色"
+        "color": "Blue"
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "category": "CUP | 杯子",
         "description": "茶壺（230ml） 描述",
         "created_at": "2025-12-04 12:05:57",
-        "color": "綠色"
+        "color": "Green"
     },
     {
         "id": 4,
@@ -41,7 +41,7 @@
         "category": "CUP | 杯子",
         "description": "茶壺（230ml） 描述",
         "created_at": "2025-12-26 12:05:57",
-        "color": "黃色"
+        "color": "Yellow"
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@
         "category": "CUP | 杯子",
         "description": "茶壺（230ml） 描述",
         "created_at": "2025-12-01 12:05:57",
-        "color": "橙色"
+        "color": "Orange"
     },
     {
         "id": 6,
@@ -63,7 +63,7 @@
         "category": "CUP | 杯子",
         "description": "茶壺（230ml） 描述",
         "created_at": "2025-12-06 12:05:57",
-        "color": "紫色"
+        "color": "Purple"
     },
     {
         "id": 7,
@@ -74,6 +74,6 @@
         "category": "CUP | 杯子",
         "description": "茶壺（230ml） 描述",
         "created_at": "2025-12-01 12:05:57",
-        "color": "粉色"
+        "color": "Pink"
     }
 ]

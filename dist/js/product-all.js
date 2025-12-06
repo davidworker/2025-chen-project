@@ -4,15 +4,15 @@ let res = await fetch("./database/products.json");
 // 將回傳資料轉為 JSON 格式
 let products = await res.json();
 
+// 主要 DOM
+const app = document.querySelector("#product-recommend-app");
 
-// 分頁
+// 分頁 DOM
+const paginateApp = document.querySelector("#product-recommend-paginate-app");
 
-/**
- * once 一頁幾筆
- * page 目前第幾頁
- * pages 總頁數
- * total 總筆數
- */
+// 排列方式 DOM
+const sortByApp = document.querySelector("#sort-by-app");
+
 
 // 總比數
 let total = products.length;
@@ -33,6 +33,35 @@ let paginate = {
     total
 }
 
+
+const sortProducts = () => {
+    let sort = sortByApp.value || 'color';
+    switch (sort) {
+        case 'color':
+            products.sort((a, b) => a.color.localeCompare(b.color));
+            break;
+        case 'name_asc':
+            products.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+        case 'name_desc':
+            products.sort((a, b) => b.name.localeCompare(a.name));
+            break;
+        case 'price_asc':
+            products.sort((a, b) => a.price - b.price);
+            break;
+        case 'price_desc':
+            products.sort((a, b) => b.price - a.price);
+            break;
+        case 'date_desc':
+            products.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            break;
+        case 'date_asc':
+            products.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+            break;
+    }
+
+}
+
 // 當前頁面資料
 const currentProducts = (products, paginate) => {
     let start = (paginate.page - 1) * paginate.once;
@@ -40,7 +69,9 @@ const currentProducts = (products, paginate) => {
     return products.slice(start, end);
 }
 
-const render = (data) => {
+const render = () => {
+    sortProducts();
+    let data = currentProducts(products, paginate);
     let html = '';
     data.forEach((item) => {
         let soldOut = item.stock <= 0 ? 'sold-out' : '';
@@ -55,7 +86,7 @@ const render = (data) => {
             </div>
             <div class="product-content">
                 <a href="#3">
-                    <p>${item.name}</p>
+                    <p>${item.name} | ${item.color} | ${item.created_at}</p>
                     <p>NT$ ${item.price}</p>
                 </a>
             </div>
@@ -75,8 +106,7 @@ const initPaginate = () => {
     paginateApp.innerHTML = html;
 }
 
-const app = document.querySelector("#product-recommend-app");
-const paginateApp = document.querySelector("#product-recommend-paginate-app");
+
 
 
 paginateApp.addEventListener("click", (e) => {
@@ -90,45 +120,28 @@ paginateApp.addEventListener("click", (e) => {
     // 如果點到 prev，則將 page - 1。需判斷 page 是否大於 1
     if (target.classList.contains("prev") && paginate.page > 1) {
         paginate.page--;
-        render(currentProducts(products, paginate));
+        render();
         return;
     };
 
     // 如果點到 next，則將 page + 1。需判斷 page 是否小於 pages
     if (target.classList.contains("next") && paginate.page < paginate.pages) {
         paginate.page++;
-        render(currentProducts(products, paginate));
+        render();
         return;
     };
 
     // 如果點到數字，則將 page 改為該數字
     if (target.tagName == 'A' && !target.classList.contains("prev") && !target.classList.contains("next")) {
         paginate.page = parseInt(target.textContent);
-        render(currentProducts(products, paginate));
+        render();
         return;
     };
 });
 
+sortByApp.addEventListener("change", () => {
+    render();
+});
 
 
-
-let data = currentProducts(products, paginate);
-
-render(data);
-
-
-//  <div class="product-item sold-out">
-//                             <div class="product-image">
-//                                 <a href="/product-detail.html">
-//                                     <img src="./images/product-1.webp" alt="">
-//                                 </a>
-//                                 <a href="#2" class="add-cart"><i class="fa-solid fa-cart-shopping"></i> 加入購物車</a>
-//                                 <span class="sold-out-text">售完</span>
-//                             </div>
-//                             <div class="product-content">
-//                                 <a href="#3">
-//                                     <p>茶壺 (230ml)111</p>
-//                                     <p>NT$ 1,200</p>
-//                                 </a>
-//                             </div>
-//                         </div>
+render();
