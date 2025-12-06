@@ -1,0 +1,79 @@
+[
+    {
+        "id": 1,
+        "name": "茶壺（230ml）-1",
+        "price": 4500,
+        "stock": 10,
+        "image": "/images/p1-1.webp",
+        "category": "CUP | 杯子",
+        "description": "茶壺（230ml） 描述",
+        "created_at": "2025-12-06 12:05:57",
+        "color": "紅色"
+    },
+    {
+        "id": 2,
+        "name": "茶壺（230ml）-2",
+        "price": 5500,
+        "stock": 10,
+        "image": "/images/p1-2.webp",
+        "category": "CUP | 杯子",
+        "description": "茶壺（230ml） 描述",
+        "created_at": "2025-12-05 12:05:57",
+        "color": "藍色"
+    },
+    {
+        "id": 3,
+        "name": "茶壺（230ml）-3",
+        "price": 6000,
+        "stock": 10,
+        "image": "/images/p1-m.webp",
+        "category": "CUP | 杯子",
+        "description": "茶壺（230ml） 描述",
+        "created_at": "2025-12-04 12:05:57",
+        "color": "綠色"
+    },
+    {
+        "id": 4,
+        "name": "茶壺（230ml）-4",
+        "price": 3500,
+        "stock": 10,
+        "image": "/images/product-category-1.jpg",
+        "category": "CUP | 杯子",
+        "description": "茶壺（230ml） 描述",
+        "created_at": "2025-12-26 12:05:57",
+        "color": "黃色"
+    },
+    {
+        "id": 5,
+        "name": "茶壺（230ml）-5",
+        "price": 2500,
+        "stock": 10,
+        "image": "/images/product-category-2.jpg",
+        "category": "CUP | 杯子",
+        "description": "茶壺（230ml） 描述",
+        "created_at": "2025-12-01 12:05:57",
+        "color": "橙色"
+    },
+    {
+        "id": 6,
+        "name": "茶壺（230ml）-6",
+        "price": 3000,
+        "stock": 0,
+        "image": "/images/product-category-3.jpg",
+        "category": "CUP | 杯子",
+        "description": "茶壺（230ml） 描述",
+        "created_at": "2025-12-06 12:05:57",
+        "color": "紫色"
+    },
+    {
+        "id": 7,
+        "name": "茶壺（230ml）-7",
+        "price": 2000,
+        "stock": 10,
+        "image": "/images/product-category-4.jpg",
+        "category": "CUP | 杯子",
+        "description": "茶壺（230ml） 描述",
+        "created_at": "2025-12-01 12:05:57",
+        "color": "粉色"
+    }
+]

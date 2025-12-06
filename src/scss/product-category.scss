@@ -151,6 +151,32 @@
     }
 }
 
+.product-recommend-paginate {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    gap: 10px;
+
+    a {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #646464;
+        color: #fff;
+        border-radius: 99px;
+        transition: all 0.3s ease-in-out;
+
+        &:hover,
+        &.active {
+            background-color: #137cf3;
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .category-header {
         width: 100%;
