@@ -113,3 +113,47 @@
         }
     }
 }
+
+.product-content {
+
+    img {
+        max-width: 80%;
+        height: auto;
+    }
+
+    p,
+    div {
+        line-height: 2;
+        font-size: 16px;
+    }
+
+    hr {
+        margin: 30px 0;
+    }
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+
+    th,
+    td {
+        padding: 15px;
+        border: 1px solid #ccc;
+    }
+
+    th {
+        background-color: #bbbbbb;
+        color: #000;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f0f0f0;
+    }
+
+    ul {
+        display: grid;
+        gap: 10px;
+    }
+}
