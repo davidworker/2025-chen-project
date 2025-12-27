@@ -11,16 +11,27 @@ class Apps {
     /**
      * 發送 POST 請求
      * @param {*} sheetName 
-     * @param {*} data 
+     * @param {*} params = {} 
      * @returns 
      */
-    async doPost(sheetName, data) {
-
+    async doPost(sheetName, params) {
+        let form = new FormData();
+        for (let key in params) {
+            form.append(key, params[key]);
+        }
+        form.append('sn', sheetName);
+        let response = await fetch(this.api, {
+            method: 'POST',
+            body: form,
+        });
+        let data = await response.json();
+        return data;
     }
 
     /**
      * 發送 GET 請求
      * @param {*} sheetName 
+     * @param {*} params = {} 
      * @returns 
      */
     async doGet(sheetName, params = {}) {

@@ -3,7 +3,7 @@ import { ProductCache } from "./ProductCache.js";
 
 let cache = ProductCache.read();
 
-const API = 'https://script.google.com/macros/s/AKfycbxrummcIixvqfu9k8XSnaMpvoj223Yq74Xu_lZ5YsTUdteTu-5PLSCAgBdj8Ogt0yvCyw/exec'
+const API = 'https://script.google.com/macros/s/AKfycbzQnD82iyZB6sJ21ygav3pyOTBWGSrxswlSgshLWHzVJXLw0j-irUWhJQyDQyjeSIzQzg/exec'
 let apps = new Apps(API)
 
 const load = async (page, sort = 'name', order = 'asc') => {
@@ -175,3 +175,15 @@ sortByApp.addEventListener("change", () => {
 
 
 render();
+
+
+let contactData = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    phone: '0912345678',
+    remark: 'Hello, I have a question about the product.',
+}
+
+console.log(contactData);
+let res = await apps.doPost('contact', contactData);
+console.log(res);
