@@ -23,8 +23,10 @@ class Apps {
      * @param {*} sheetName 
      * @returns 
      */
-    async doGet(sheetName) {
-        let response = await fetch(this.api, { sheetName: sheetName });
+    async doGet(sheetName, params = {}) {
+        params.sn = sheetName;
+        let api = `${this.api}?${new URLSearchParams(params).toString()}`;
+        let response = await fetch(api);
         let data = await response.json();
         return data;
     }

@@ -1,15 +1,20 @@
 import { Apps } from "./Apps.js";
 
-let apps = new Apps('https://script.google.com/macros/s/AKfycbypyelyuZOrsFo1Raim5mET5FSOIQSJhna8HbsS28WViqlkPv2q9qMEjYi9yNS2ebGQdA/exec')
-let res = await apps.doGet('products');
+const API = 'https://script.google.com/macros/s/AKfycbxrummcIixvqfu9k8XSnaMpvoj223Yq74Xu_lZ5YsTUdteTu-5PLSCAgBdj8Ogt0yvCyw/exec'
+let apps = new Apps(API)
 
+const load = async (page, sort = 'name', order = 'asc') => {
+    let once = 4;
+    let res = await apps.doGet('product', { page: page, limit: once, sort: sort, order: order });
+    return res;
+}
 
-
-// 發送 GET 請求
-// let res = await fetch("./database/products.json");
-
-// 將回傳資料轉為 JSON 格式
-let products = res.data;
+let paginate = {
+    once: 4,
+    page: 1,
+    pages: 1,
+    total: 0,
+}
 
 // 主要 DOM
 const app = document.querySelector("#product-recommend-app");
@@ -20,67 +25,39 @@ const paginateApp = document.querySelector("#product-recommend-paginate-app");
 // 排列方式 DOM
 const sortByApp = document.querySelector("#sort-by-app");
 
-
-// 總比數
-let total = products.length;
-
-// 一頁幾筆
-let once = 4;
-
-// 目前第幾頁
-let page = 1;
-
-// 總頁數，無條件進位避免有餘數
-let pages = Math.ceil(total / once);
-
-let paginate = {
-    once,
-    page,
-    pages,
-    total
-}
-
-
-const sortProducts = () => {
+const sortType = () => {
     let sort = sortByApp.value || 'color';
     switch (sort) {
         case 'color':
-            products.sort((a, b) => a.color.localeCompare(b.color));
-            break;
+            return { sort: 'color', order: 'asc' };
         case 'name_asc':
-            products.sort((a, b) => a.name.localeCompare(b.name));
-            break;
+            return { sort: 'name', order: 'asc' };
         case 'name_desc':
-            products.sort((a, b) => b.name.localeCompare(a.name));
-            break;
+            return { sort: 'name', order: 'desc' };
         case 'price_asc':
-            products.sort((a, b) => a.price - b.price);
-            break;
+            return { sort: 'price', order: 'asc' };
         case 'price_desc':
-            products.sort((a, b) => b.price - a.price);
-            break;
+            return { sort: 'price', order: 'desc' };
         case 'date_desc':
-            products.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-            break;
+            return { sort: 'created_at', order: 'desc' };
         case 'date_asc':
-            products.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
-            break;
+            return { sort: 'created_at', order: 'asc' };
+    }
+}
+
+const render = async () => {
+    let sort = sortType();
+    let res = await load(paginate.page, sort.sort, sort.order);
+    let products = res.data;
+    paginate = {
+        once: res.limit,
+        page: res.page,
+        pages: res.totalPages,
+        total: res.total,
     }
 
-}
-
-// 當前頁面資料
-const currentProducts = (products, paginate) => {
-    let start = (paginate.page - 1) * paginate.once;
-    let end = start + paginate.once;
-    return products.slice(start, end);
-}
-
-const render = () => {
-    sortProducts();
-    let data = currentProducts(products, paginate);
     let html = '';
-    data.forEach((item) => {
+    products.forEach((item) => {
         let soldOut = item.stock <= 0 ? 'sold-out' : '';
         html += `
          <div class="product-item ${soldOut}">
