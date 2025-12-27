@@ -1,4 +1,7 @@
 import { Apps } from "./Apps.js";
+import { ProductCache } from "./ProductCache.js";
+
+let cache = ProductCache.read();
 
 const API = 'https://script.google.com/macros/s/AKfycbxrummcIixvqfu9k8XSnaMpvoj223Yq74Xu_lZ5YsTUdteTu-5PLSCAgBdj8Ogt0yvCyw/exec'
 let apps = new Apps(API)
@@ -14,6 +17,24 @@ let paginate = {
     page: 1,
     pages: 1,
     total: 0,
+}
+
+const showLoading = () => {
+    Swal.fire({
+        title: '請稍等',
+        text: '正在加載中...',
+        icon: 'info',
+        timerProgressBar: true,
+        showConfirmButton: false,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+}
+
+const hideLoading = () => {
+    Swal.close();
 }
 
 // 主要 DOM
@@ -46,15 +67,33 @@ const sortType = () => {
 }
 
 const render = async () => {
-    let sort = sortType();
-    let res = await load(paginate.page, sort.sort, sort.order);
-    let products = res.data;
-    paginate = {
-        once: res.limit,
-        page: res.page,
-        pages: res.totalPages,
-        total: res.total,
+    let type = sortByApp.value || 'color'
+    let products = [];
+    let currentPage = paginate.page;
+    if (cache[type] && cache[type][paginate.page] && cache[type][paginate.page].expire > Date.now()) {
+        products = cache[type][paginate.page].products;
+        paginate = cache[type][paginate.page].paginate;
+        paginate.page = currentPage;
+    } else {
+        let sort = sortType();
+        showLoading();
+        let res = await load(paginate.page, sort.sort, sort.order);
+        hideLoading();
+        products = res.data;
+        paginate = {
+            once: res.limit,
+            page: res.page,
+            pages: res.totalPages,
+            total: res.total,
+        }
+
+        if (!cache[type]) {
+            cache[type] = {};
+        }
+        cache[type][paginate.page] = { products: products, paginate: paginate, expire: Date.now() + 1000 * 60 };
+        ProductCache.write(cache);
     }
+    app.classList.add('loading');
 
     let html = '';
     products.forEach((item) => {
@@ -77,7 +116,13 @@ const render = async () => {
         </div>
         `
     })
-    app.innerHTML = html;
+    setTimeout(() => {
+        app.classList.remove('loading');
+    }, 500);
+
+    setTimeout(() => {
+        app.innerHTML = html;
+    }, 300);
     initPaginate();
 }
 
@@ -118,6 +163,7 @@ paginateApp.addEventListener("click", (e) => {
     // 如果點到數字，則將 page 改為該數字
     if (target.tagName == 'A' && !target.classList.contains("prev") && !target.classList.contains("next")) {
         paginate.page = parseInt(target.textContent);
+        console.log(paginate.page);
         render();
         return;
     };

@@ -63,6 +63,13 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
+        min-height: 300px;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+
+        &.loading {
+            opacity: 0;
+        }
 
         .product-item {
 
