@@ -1,8 +1,15 @@
+import { Apps } from "./Apps.js";
+
+let apps = new Apps('https://script.google.com/macros/s/AKfycbypyelyuZOrsFo1Raim5mET5FSOIQSJhna8HbsS28WViqlkPv2q9qMEjYi9yNS2ebGQdA/exec')
+let res = await apps.doGet('products');
+
+
+
 // 發送 GET 請求
-let res = await fetch("./database/products.json");
+// let res = await fetch("./database/products.json");
 
 // 將回傳資料轉為 JSON 格式
-let products = await res.json();
+let products = res.data;
 
 // 主要 DOM
 const app = document.querySelector("#product-recommend-app");
